@@ -22,10 +22,13 @@ export default function HomeSlider() {
       imageSrc: "/slider/slider-1.png",
     },
     {
-      imageSrc: "/slider/slider-1.png",
+      imageSrc: "/slider/slider-2.png",
     },
     {
-      imageSrc: "/slider/slider-1.png",
+      imageSrc: "/slider/slider-3.png",
+    },
+    {
+      imageSrc: "/slider/slider-4.png",
     },
   ];
   return (
@@ -36,9 +39,9 @@ export default function HomeSlider() {
             <div className="w-full relative ">
               <Image
                 src={slide.imageSrc}
-                loading="lazy"
                 alt="banner"
                 width={4320}
+                priority
                 height={1959}
                 className="w-full h-auto"
               />

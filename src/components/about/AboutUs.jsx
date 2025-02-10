@@ -40,10 +40,10 @@ export default function AboutUs({ content }) {
               className="xl:py-5 xl:px-4 flex flex-col items-center justify-center bg-[#fafafa] gap-2"
               key={index}
             >
-              <h1 className="text-lg xl:text-2xl font-bold text-site-primary">
+              <h1 className="text-lg xl:text-2xl font-bold text-site-primary text-center">
                 {item.heading}
               </h1>
-              <h3 className="capitalize text-sm xl:text-lg text-site-secondary">
+              <h3 className="capitalize text-sm xl:text-lg text-site-secondary text-center">
                 {item.support}
               </h3>
             </div>

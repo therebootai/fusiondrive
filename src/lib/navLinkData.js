@@ -1,3 +1,5 @@
+import { All_TOUR_DATA } from "./tourpackageData";
+
 const navLinks = [
   {
     text: "home",
@@ -9,7 +11,13 @@ const navLinks = [
   },
   {
     text: "Tour Packages",
-    subMenu: [{ text: "text", href: "" }],
+    subMenu: All_TOUR_DATA.map((item) => {
+      const title = item.link.split("/").pop();
+      return {
+        text: title,
+        href: item.link,
+      };
+    }),
   },
   {
     text: "Car Service",

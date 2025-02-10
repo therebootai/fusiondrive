@@ -1,8 +1,11 @@
 import AboutUs from "@/components/about/AboutUs";
 import QuickQueryBanner from "@/components/global/QuickQueryBanner";
+import BikeRentalService from "@/components/home/BikeRentalService";
 import CarRentalService from "@/components/home/CarRentalService";
 import CustomerFeedback from "@/components/home/CustomerFeedback";
 import HomeSlider from "@/components/home/HomeSlider";
+import HomeTourPackages from "@/components/home/HomeTourPackages";
+import TravelMoments from "@/components/home/TravelMoments";
 import MainWebSiteTemPlate from "@/templates/MainWebSiteTemPlate";
 import Head from "next/head";
 import Image from "next/image";
@@ -48,7 +51,10 @@ Welcome to <span style="font-weight: 500;">Fusion Drives</span> - Your Trusted R
         <div className=" xl:p-16 lg:p-8 p-4 flex flex-col lg:gap-16 gap-8">
           <QuickQueryBanner />
           <AboutUs content={aboutData} />
+          <HomeTourPackages />
           <CarRentalService />
+          <TravelMoments />
+          <BikeRentalService />
           <div>
             <Image
               src="/extra/car-banner.png"

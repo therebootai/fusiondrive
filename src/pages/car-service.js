@@ -25,8 +25,7 @@ export default function CarService({ pageData }) {
 }
 
 export async function getStaticProps() {
-  const pageData = AllCarServices;
   return {
-    props: { pageData },
+    props: { pageData: AllCarServices },
   };
 }

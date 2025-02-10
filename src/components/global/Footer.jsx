@@ -2,11 +2,24 @@ import Image from "next/image";
 import Link from "next/link";
 import { TbBrandWhatsappFilled } from "react-icons/tb";
 import { FaFacebook, FaPhoneVolume } from "react-icons/fa6";
-import { IoMailSharp } from "react-icons/io5";
+import { IoLogoLinkedin, IoMailSharp } from "react-icons/io5";
 import { HiLocationMarker } from "react-icons/hi";
 import { AiFillInstagram } from "react-icons/ai";
+import { All_TOUR_DATA } from "@/lib/tourpackageData";
+import EnquiryForm from "../contactus/EnquiryForm";
+import { FaRegWindowClose } from "react-icons/fa";
+import { useState } from "react";
+import useClickOutside from "@/hooks/useClickOutside";
 
-export default function Footer() {
+export default function Footer() {  
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const closeModal = () => {
+    setTimeout(() => setModalOpen(false), 300);
+  };
+
+  const modalRef = useClickOutside(closeModal);
+
   const QuickView = {
     heading: "Quick Links",
     subLinks: (
@@ -14,7 +27,6 @@ export default function Footer() {
         {[
           { label: "Home", href: "/" },
           { label: "About Us", href: "/about-us" },
-          { label: "Top Packages", href: "/top-packages/business_astrology" },
           { label: "Car Service", href: "/car-service" },
           { label: "Contact Us", href: "/contact-us" },
         ].map((link, key) => (
@@ -32,23 +44,10 @@ export default function Footer() {
     heading: "Top Packages",
     subLinks: (
       <ul className="flex flex-col gap-4 text-sm lg:text-xs xl:text-base leading-7 lg:leading-10 font-medium">
-        {[
-          {
-            label: "Krishna Murti Paddhati",
-            href: "/services/krishnamurti-paddhati",
-          },
-          { label: "Lal Kitab Service", href: "/services/lal-kitab-service" },
-          {
-            label: "Nadi Jyotish Service",
-            href: "/services/nadi-jyotish-service",
-          },
-          { label: "Palmistry Services", href: "/services/palmistry-service" },
-          { label: "Parasar Jyotish", href: "/services/parasar-jyotish" },
-          { label: "Tarot Services", href: "/services/tarot-service" },
-        ].map((link, key) => (
+        {All_TOUR_DATA.map((link, key) => (
           <li key={key}>
-            <Link href={link.href} className="truncate">
-              {link.label}
+            <Link href={link.link} className="truncate">
+              {link.title}
             </Link>
           </li>
         ))}
@@ -123,8 +122,9 @@ export default function Footer() {
               />
             </div>
             <p className="capitalize text-sm lg:text-base text-site-typo-secondary lg:shrink">
-              Excellent service, reasonable pricing, and courteous customer
-              service. I will use your service again for my trips to Shillong.
+              Your trusted partner for Car Hire, Rental, and Self-Drive services
+              in Assam. Experience hassle-free booking, well-maintained
+              vehicles, and reliable customer support for a smooth journey.
             </p>
             <div className="flex flex-col gap-3 lg:gap-1 xlg:gap-2">
               {Contact.map((contact, key) => (
@@ -162,7 +162,7 @@ export default function Footer() {
               ></iframe>
             </div>
             <button
-              // onClick={() => setModalOpen(true)}
+              onClick={() => setModalOpen(true)}
               type="button"
               className="rounded-md px-2 md:px-4 lg:px-2 xl:px-4 h-[2.5rem] buttonshine text-white bg-site-primary flex justify-center md:gap-2 xl:gap-4 lg:gap-2 gap-1 items-center border border-white"
             >
@@ -211,6 +211,14 @@ export default function Footer() {
               >
                 <FaFacebook />
               </Link>
+              <Link
+                href="https://www.linkedin.com/company/fusiondrives"
+                target="_blank"
+                referrerPolicy="no-referrer"
+                className="text-2xl text-site-secondary"
+              >
+                <IoLogoLinkedin />
+              </Link>
             </div>
           </div>
         </div>
@@ -236,6 +244,27 @@ export default function Footer() {
           </h1>
         </div>
       </div>
+      {modalOpen && (
+        <div className="fixed top-0 z-[1300] left-0 w-full h-full flex items-center justify-center overflow-y-scroll bg-black bg-opacity-50">
+          <div className=" w-full sm:h-[50vh] lg:h-[100vh] justify-center items-center flex flex-col modal-container  rounded-lg">
+            <div className="w-full flex p-4 justify-end items-center"></div>
+            <div
+              className=" w-[95%] md:w-[60%] lg:w-[45%] xlg:w-[40%] 2xl:w-[30%] z-[1300] relative"
+              ref={modalRef}
+            >
+              <button
+                className="bg-site-primary text-white lg:w-16 right-2 absolute z-[1400] top-2 lg:h-10 sm:w-12 sm:h-8 flex items-center justify-center rounded-lg hover:bg-white hover:text-site-primary border-2 border-site-main transition-colors duration-300"
+                onClick={closeModal}
+              >
+                <FaRegWindowClose className="lg:text-2xl sm:text-xl" />
+              </button>
+              <div>
+                <EnquiryForm />
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </footer>
   );
 }

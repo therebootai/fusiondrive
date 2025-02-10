@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
-import { AiOutlineMenuFold } from "react-icons/ai";
+import { FaRegWindowClose } from "react-icons/fa";
 import { IoCloseSharp } from "react-icons/io5";
 import { TiThMenuOutline } from "react-icons/ti";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { NavLinksData } from "@/lib/navLinkData";
+import EnquiryForm from "../contactus/EnquiryForm";
+import useClickOutside from "@/hooks/useClickOutside";
 
 export default function NavBar({ ref }) {
   const [isScrolling, setIsScrolling] = useState(false);
@@ -15,8 +17,14 @@ export default function NavBar({ ref }) {
   const router = useRouter();
 
   const isActive = (path) => {
-    return router.pathname === path || router.pathname.includes(path);
+    return router.pathname === path;
   };
+
+  const closeModal = () => {
+    setTimeout(() => setModalOpen(false), 300);
+  };
+
+  const modalRef = useClickOutside(closeModal);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -77,13 +85,17 @@ export default function NavBar({ ref }) {
                         {item.subMenu.map((menu, con) => (
                           <li
                             key={con}
-                            className="text-base xl:text-lg hover:text-site-main-yellow"
+                            className={`text-base xl:text-lg hover:text-site-primary ${
+                              isActive(menu.href)
+                                ? "text-site-primary"
+                                : "text-white"
+                            }`}
                           >
                             <Link
                               href={menu.href}
-                              className="flex items-center gap-2"
+                              className="flex items-center gap-2 capitalize"
                             >
-                              {menu.text}
+                              {menu.text.split("-").join(" ")}
                             </Link>
                           </li>
                         ))}
@@ -162,7 +174,7 @@ export default function NavBar({ ref }) {
                               <li className="text-base xlg:text-lg">
                                 <Link
                                   href={menu.href}
-                                  className="flex items-center gap-2"
+                                  className="flex items-center gap-2 capitalize"
                                 >
                                   {menu.text}
                                 </Link>
@@ -176,13 +188,36 @@ export default function NavBar({ ref }) {
                 )}
               </li>
             ))}
-            <Link
-              href="/contact-us"
+            <button
+              onClick={() => setModalOpen(true)}
+              type="button"
               className="w-fit bg-site-primary text-white py-2 px-8 rounded-full buttonShine"
             >
               Book Now
-            </Link>
+            </button>
           </ul>
+        </div>
+      )}
+
+      {modalOpen && (
+        <div className="fixed top-0 z-[1300] left-0 w-full h-full flex items-center justify-center overflow-y-scroll bg-black bg-opacity-50">
+          <div className=" w-full sm:h-[50vh] lg:h-[100vh] justify-center items-center flex flex-col modal-container  rounded-lg">
+            <div className="w-full flex p-4 justify-end items-center"></div>
+            <div
+              className=" w-[95%] md:w-[60%] lg:w-[45%] xlg:w-[40%] 2xl:w-[30%] z-[1300] relative"
+              ref={modalRef}
+            >
+              <button
+                className="bg-site-primary text-white lg:w-16 right-2 absolute z-[1400] top-2 lg:h-10 sm:w-12 sm:h-8 flex items-center justify-center rounded-lg hover:bg-white hover:text-site-primary border-2 border-site-main transition-colors duration-300"
+                onClick={closeModal}
+              >
+                <FaRegWindowClose className="lg:text-2xl sm:text-xl" />
+              </button>
+              <div>
+                <EnquiryForm />
+              </div>
+            </div>
+          </div>
         </div>
       )}
     </nav>
