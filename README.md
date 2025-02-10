@@ -1,3 +1,4 @@
+![fusion](https://github.com/user-attachments/assets/abd5bacd-3005-4e41-b039-395d066bd884)
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
 
 ## Getting Started
