@@ -1,6 +1,7 @@
 import Footer from "@/components/global/Footer";
 import NavBar from "@/components/global/NavBar";
 import useElementHeight from "@/hooks/useElementHeight";
+import OnlyMobile from "./OnlyMobile";
 
 export default function MainWebSiteTemPlate({ children }) {
   const [contentHeight, rightContentRef] = useElementHeight();
@@ -8,7 +9,7 @@ export default function MainWebSiteTemPlate({ children }) {
     <>
       <NavBar ref={rightContentRef} />
       <main style={{ marginTop: contentHeight }}>{children}</main>
-      {/* <OnlyMobile /> */}
+      <OnlyMobile />
       <Footer />
     </>
   );
