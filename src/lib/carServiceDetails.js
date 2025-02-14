@@ -6,7 +6,7 @@ const carServiceDetails = [
     seat: "05",
   },
   {
-    imgsrc: "/cars/car-2.jpg",
+    imgsrc: "/cars/car-20.jpg",
     title: "Swift Dzire",
     rate: "1799",
     seat: "05",
