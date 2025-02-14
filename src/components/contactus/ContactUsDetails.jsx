@@ -69,10 +69,10 @@ export default function ContactUsDetails() {
           Contact Information
         </h1>
         <p className="xl:text-base text-sm text-site-typo-secondary">
-          Lorem ipsum dolor sit amet consectetur. Cum risus elit aliquet
-          consequat. Ut risus est mattis mattis volutpat nunc non iaculis
-          nascetur. Lorem ipsum dolor sit amet consectetur. Cum risus elit
-          aliquet consequat.
+          Ready to embark on an unforgettable adventure? At Fusion Drives,
+          we&apos;re here to fuel your wanderlust with top-notch bikes and cars
+          for every terrain. Let us be your trusted travel partner—contact us
+          today and let the journey begin!
         </p>
         <div className="flex flex-col gap-4 text-site-typo-secondary font-medium sm:text-base lg:text-sm xlg:text-base xl:text-lg">
           {Contact.map((item, index) => (
