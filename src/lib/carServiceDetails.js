@@ -24,9 +24,15 @@ const carServiceDetails = [
     seat: "05",
   },
   {
+    imgsrc: "/cars/car-2.jpg",
+    title: "Swift",
+    rate: "1699",
+    seat: "05",
+  },
+  {
     imgsrc: "/cars/car-5.jpg",
-    title: "Tata Tiago Car",
-    rate: "1499",
+    title: "Tata Tigor Car",
+    rate: "1799",
     seat: "05",
   },
   {
@@ -42,7 +48,7 @@ const carServiceDetails = [
     seat: "05",
   },
   {
-    imgsrc: "/cars/car-8.jpg",
+    imgsrc: "/cars/car-17.jpg",
     title: "Grand vitara car",
     rate: "2499",
     seat: "05",
@@ -80,7 +86,7 @@ const carServiceDetails = [
   {
     imgsrc: "/cars/car-13.jpg",
     title: "Scorpio Car",
-    rate: "1000",
+    rate: "3799",
     seat: "07",
   },
   {
@@ -92,13 +98,25 @@ const carServiceDetails = [
   {
     imgsrc: "/cars/car-15.jpg",
     title: "MG hector Car",
-    rate: "1000",
+    rate: "3299",
     seat: "07",
   },
   {
     imgsrc: "/cars/car-16.jpg",
     title: "MG hector Plus Car",
     rate: "3799",
+    seat: "07",
+  },
+  {
+    imgsrc: "/cars/car-18.jpg",
+    title: "Alto",
+    rate: "999",
+    seat: "05",
+  },
+  {
+    imgsrc: "/cars/car-19.jpg",
+    title: "Bolero Neo +",
+    rate: "3499",
     seat: "07",
   },
 ];

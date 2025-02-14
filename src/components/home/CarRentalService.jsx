@@ -10,7 +10,7 @@ export default function CarRentalService() {
         darkText="Car Rental Service"
       />
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 place-items-stretch gap-4 lg:gap-6 xl:gap-8">
-        {AllCarServices.slice(0, 6).map((item, index) => (
+        {AllCarServices.map((item, index) => (
           <CarServiceCard key={index} content={item} />
         ))}
       </div>
