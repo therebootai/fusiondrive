@@ -14,7 +14,7 @@ const carServiceDetails = [
   {
     imgsrc: "/cars/car-3.jpg",
     title: "Glanza Car",
-    rate: "1000",
+    rate: "1799",
     seat: "05",
   },
   {
@@ -56,7 +56,7 @@ const carServiceDetails = [
   {
     imgsrc: "/cars/car-8.jpg",
     title: "Nexon Car",
-    rate: "1000",
+    rate: "2499",
     seat: "05",
   },
   {
@@ -68,13 +68,13 @@ const carServiceDetails = [
   {
     imgsrc: "/cars/car-10.jpg",
     title: "Ertiga Car",
-    rate: "1000",
+    rate: "3200",
     seat: "07",
   },
   {
     imgsrc: "/cars/car-11.jpg",
     title: "Kia carens Car",
-    rate: "1000",
+    rate: "3200",
     seat: "07",
   },
   {
