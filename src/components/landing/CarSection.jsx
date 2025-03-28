@@ -4,27 +4,27 @@ const CarSection = () => {
     const cars = [
       {
         name: "Baleno Car",
-        img: "/cars/car-1.jpg",
+        img: "/landingcars/baleno.jpg",
       },
       {
         name: "Swift",
-        img: "/cars/car-2.jpg",
+        img: "/landingcars/swift.jpg",
       },
       {
         name: "Glanza Car",
-        img: "/cars/car-3.jpg",
+        img: "/landingcars/glanza.jpg",
       },
       {
         name: "Tata Tiago Car",
-        img: "/cars/car-4.jpg",
+        img: "/landingcars/tiago.jpg",
       },
       {
         name: "Tata Tigor Car",
-        img: "/cars/car-5.jpg",
+        img: "/landingcars/tigor.jpg",
       },
       {
         name: "i20 N-Line",
-        img: "/cars/car-6.jpg",
+        img: "/landingcars/i20-n-line.jpg",
       },
     ];
     

@@ -10,11 +10,33 @@ import EnquiryForm from "../contactus/EnquiryForm";
 import useClickOutside from "@/hooks/useClickOutside";
 
 export default function NavBar({ ref }) {
+  const predefinedPaths = [
+    "/self-drive-car-in-guwahati",
+    "/self-drive-car-in-airport",
+    "/self-drive-car-near-guwahati",
+    "/self-drive-car-in-tawang",
+    "/self-drive-car-near-tawang",
+    "/self-drive-car-near-mizoram",
+    "/self-drive-car-in-mizoram",
+    "/bike-rental-near-me",
+    "/car-rental-in-guwahati",
+    "/bike-rental-service-in-guwahati",
+    "/car-rental-near-airport",
+    "/self-drive-bike-rental-service",
+    "/landing",
+  ];
   const [isScrolling, setIsScrolling] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(null); // Track open dropdown for mobile
   const [modalOpen, setModalOpen] = useState(false);
   const router = useRouter();
+    const [currentPath, setCurrentPath] = useState(null);
+
+      useEffect(() => {
+        if (typeof window !== "undefined") {
+          setCurrentPath(router.asPath); // Set client-side path after hydration
+        }
+      }, [router.asPath]);
 
   const isActive = (path) => {
     return router.pathname === path;
@@ -54,22 +76,13 @@ export default function NavBar({ ref }) {
         </Link>
 
         <ul className="hidden lg:flex items-center justify-center gap-5">
-          {NavLinksData.map((item, index) => (
-            <li key={index} className="relative group">
-              {item.href ? (
-                <Link
-                  href={item.href}
-                  className={`${
-                    isActive(item.href)
-                      ? "text-site-primary"
-                      : "text-site-secondary"
-                  } text-base xl:text-xl font-medium capitalize hover:text-site-primary`}
-                >
-                  {item.text}
-                </Link>
-              ) : (
-                <div className="relative">
-                  <span
+          {currentPath &&
+            !predefinedPaths.includes(router.asPath) &&
+            NavLinksData.map((item, index) => (
+              <li key={index} className="relative group">
+                {item.href ? (
+                  <Link
+                    href={item.href}
                     className={`${
                       isActive(item.href)
                         ? "text-site-primary"
@@ -77,35 +90,46 @@ export default function NavBar({ ref }) {
                     } text-base xl:text-xl font-medium capitalize hover:text-site-primary`}
                   >
                     {item.text}
-                  </span>
+                  </Link>
+                ) : (
+                  <div className="relative">
+                    <span
+                      className={`${
+                        isActive(item.href)
+                          ? "text-site-primary"
+                          : "text-site-secondary"
+                      } text-base xl:text-xl font-medium capitalize hover:text-site-primary`}
+                    >
+                      {item.text}
+                    </span>
 
-                  <div className="absolute top-full bg-black/90 left-1/2 -translate-x-1/2 duration-500 transition-all origin-top-right opacity-0 group-hover:opacity-100 w-0 group-hover:w-auto overflow-hidden flex rounded">
-                    <div className="text-white flex flex-col gap-6 whitespace-nowrap p-2 py-4 xlg:p-4">
-                      <ul className="flex flex-col gap-4">
-                        {item.subMenu.map((menu, con) => (
-                          <li
-                            key={con}
-                            className={`text-base xl:text-lg hover:text-site-primary ${
-                              isActive(menu.href)
-                                ? "text-site-primary"
-                                : "text-white"
-                            }`}
-                          >
-                            <Link
-                              href={menu.href}
-                              className="flex items-center gap-2 capitalize"
+                    <div className="absolute top-full bg-black/90 left-1/2 -translate-x-1/2 duration-500 transition-all origin-top-right opacity-0 group-hover:opacity-100 w-0 group-hover:w-auto overflow-hidden flex rounded">
+                      <div className="text-white flex flex-col gap-6 whitespace-nowrap p-2 py-4 xlg:p-4">
+                        <ul className="flex flex-col gap-4">
+                          {item.subMenu.map((menu, con) => (
+                            <li
+                              key={con}
+                              className={`text-base xl:text-lg hover:text-site-primary ${
+                                isActive(menu.href)
+                                  ? "text-site-primary"
+                                  : "text-white"
+                              }`}
                             >
-                              {menu.text.split("-").join(" ")}
-                            </Link>
-                          </li>
-                        ))}
-                      </ul>
+                              <Link
+                                href={menu.href}
+                                className="flex items-center gap-2 capitalize"
+                              >
+                                {menu.text.split("-").join(" ")}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
                     </div>
                   </div>
-                </div>
-              )}
-            </li>
-          ))}
+                )}
+              </li>
+            ))}
         </ul>
         {/* Contact Us Button */}
         <button
@@ -140,54 +164,56 @@ export default function NavBar({ ref }) {
       {isMenuOpen && (
         <div className="bg-black/90 absolute top-full w-full left-0 text-white lg:hidden p-6 pb-24 rounded-b-lg h-screen overflow-y-scroll">
           <ul className="flex flex-col gap-4 capitalize">
-            {NavLinksData.map((item, index) => (
-              <li key={index} className="relative">
-                {item.href ? (
-                  <Link href={item.href} className="hover:text-primary ">
-                    {item.text}
-                  </Link>
-                ) : (
-                  <div>
-                    <div
-                      className="flex justify-between items-center cursor-pointer"
-                      onClick={() =>
-                        setOpenDropdown(openDropdown === index ? null : index)
-                      }
-                    >
-                      <span className="capitalize">{item.text}</span>
-                      <span>{openDropdown === index ? "-" : "+"}</span>
-                    </div>
-                    {openDropdown === index && (
+            {currentPath &&
+              !predefinedPaths.includes(router.asPath) &&
+               NavLinksData.map((item, index) => (
+                <li key={index} className="relative">
+                  {item.href ? (
+                    <Link href={item.href} className="hover:text-primary ">
+                      {item.text}
+                    </Link>
+                  ) : (
+                    <div>
                       <div
-                        className={`duration-500 transition-all origin-top ${
-                          openDropdown === index
-                            ? "h-auto opacity-100"
-                            : "h-0 opacity-0"
-                        } overflow-hidden flex flex-col rounded`}
+                        className="flex justify-between items-center cursor-pointer"
+                        onClick={() =>
+                          setOpenDropdown(openDropdown === index ? null : index)
+                        }
                       >
-                        <ul className="flex flex-col gap-4">
-                          {item.subMenu.map((menu, subIndex) => (
-                            <div
-                              className="text-white flex flex-col gap-6 whitespace-nowrap p-2"
-                              key={subIndex}
-                            >
-                              <li className="text-base xlg:text-lg">
-                                <Link
-                                  href={menu.href}
-                                  className="flex items-center gap-2 capitalize"
-                                >
-                                  {menu.text}
-                                </Link>
-                              </li>
-                            </div>
-                          ))}
-                        </ul>
+                        <span className="capitalize">{item.text}</span>
+                        <span>{openDropdown === index ? "-" : "+"}</span>
                       </div>
-                    )}
-                  </div>
-                )}
-              </li>
-            ))}
+                      {openDropdown === index && (
+                        <div
+                          className={`duration-500 transition-all origin-top ${
+                            openDropdown === index
+                              ? "h-auto opacity-100"
+                              : "h-0 opacity-0"
+                          } overflow-hidden flex flex-col rounded`}
+                        >
+                          <ul className="flex flex-col gap-4">
+                            {item.subMenu.map((menu, subIndex) => (
+                              <div
+                                className="text-white flex flex-col gap-6 whitespace-nowrap p-2"
+                                key={subIndex}
+                              >
+                                <li className="text-base xlg:text-lg">
+                                  <Link
+                                    href={menu.href}
+                                    className="flex items-center gap-2 capitalize"
+                                  >
+                                    {menu.text}
+                                  </Link>
+                                </li>
+                              </div>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </li>
+              ))}
             <button
               onClick={() => setModalOpen(true)}
               type="button"
