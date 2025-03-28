@@ -47,6 +47,7 @@ export default function EnquiryForm() {
           required
           max={10}
           min={10}
+          pattern="[0-9]{10}"
           onChange={(e) => setNumber(e.target.value)}
           className="py-4 xl:py-6 text-[#020202] placeholder:text-[#020202] px-4 w-full xl:max-w-[66%] bg-white/65 focus:outline-none rounded"
           placeholder="Mobile Number"
