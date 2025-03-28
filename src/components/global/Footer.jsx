@@ -8,10 +8,28 @@ import { AiFillInstagram } from "react-icons/ai";
 import { All_TOUR_DATA } from "@/lib/tourpackageData";
 import EnquiryForm from "../contactus/EnquiryForm";
 import { FaRegWindowClose } from "react-icons/fa";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useClickOutside from "@/hooks/useClickOutside";
+import { useRouter } from "next/router";
 
 export default function Footer() {  
+  const predefinedPaths = [
+    "/self-drive-car-in-guwahati",
+    "/self-drive-car-in-airport",
+    "/self-drive-car-near-guwahati",
+    "/self-drive-car-near-tawang",
+    "/self-drive-car-in-tawang",
+    "/self-drive-car-near-mizoram",
+    "/self-drive-car-in-mizoram",
+    "/bike-rental-near-me",
+    "/car-rental-in-guwahati",
+    "/bike-rental-service-in-guwahati",
+    "/car-rental-near-airport",
+    "/self-drive-bike-rental-service",
+    "/landing",
+  ];
+  const [currentPath, setCurrentPath] = useState(null);
+  const router = useRouter();
   const [modalOpen, setModalOpen] = useState(false);
 
   const closeModal = () => {
@@ -20,6 +38,84 @@ export default function Footer() {
 
   const modalRef = useClickOutside(closeModal);
 
+  const landing1 = {
+    heading: "Our Self Drive Car",
+    subLinks: (
+      <ul className="flex flex-col gap-4 text-sm lg:text-xs xl:text-base leading-7 lg:leading-10 font-medium">
+        {[
+          {
+            label: "Self Drive Car in Guwahati",
+            href: "/self-drive-car-in-guwahati",
+          },
+          {
+            label: "Self Drive Car in Airport",
+            href: "/self-drive-car-in-airport",
+          },
+          {
+            label: "Self Drive Car near Guwahati",
+            href: "/self-drive-car-near-guwahati",
+          },
+          {
+            label: "Self Drive Car in Guwahati",
+            href: "/self-drive-car-in-guwahati",
+          },
+          {
+            label: "Self Drive Car in Tawang",
+            href: "/self-drive-car-in-tawang",
+          },
+          {
+            label: "Self Drive Car in Mizoram",
+            href: "/self-drive-car-in-mizoram",
+          },
+        ].map((link, key) => (
+          <li key={key}>
+            <Link href={link.href} className="">
+              {link.label}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    ),
+  };
+  const landing2 = {
+    heading: "Our Best Services",
+    subLinks: (
+      <ul className="flex flex-col gap-4 text-sm lg:text-xs xl:text-base leading-7 lg:leading-10 font-medium">
+        {[
+          {
+            label: "Car Rental in Guwahati",
+            href: "/car-rental-in-guwahati",
+          },
+          {
+            label: "Self Drive Car near Guwahati",
+            href: "/self-drive-car-near-guwahati",
+          },
+          {
+            label: "Bike Rental Service in Guwahati",
+            href: "/bike-rental-service-in-guwahati",
+          },
+          {
+            label: "Bike Rental near me",
+            href: "/bike-rental-near-me",
+          },
+          {
+            label: "Car Rental near Airport",
+            href: "/car-rental-near-airport",
+          },
+          {
+            label: "Self Drive Bike Rental Service",
+            href: "/self-drive-bike-rental-service",
+          },
+        ].map((link, key) => (
+          <li key={key}>
+            <Link href={link.href} className="">
+              {link.label}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    ),
+  };
   const QuickView = {
     heading: "Quick Links",
     subLinks: (
@@ -54,6 +150,12 @@ export default function Footer() {
       </ul>
     ),
   };
+
+      useEffect(() => {
+          if (typeof window !== "undefined") {
+            setCurrentPath(router.asPath); // Set client-side path after hydration
+          }
+        }, [router.asPath]);
 
   const Contact = [
     {
@@ -138,16 +240,34 @@ export default function Footer() {
             </div>
           </div>
           <div className="flex flex-col gap-3 xl:text-base lg:text-xs text-base xl:gap-3 text-site-typo-secondary">
-            <h1 className="text-lg xl:text-2xl font-semibold text-site-secondary truncate">
-              {QuickView.heading}
+            <h1
+              className={`text-lg xl:text-2xl font-semibold ${
+                currentPath && predefinedPaths.includes(router.asPath)
+                  && "text-site-primary"
+              } truncate`}
+            >
+              {currentPath && predefinedPaths.includes(router.asPath)
+                ? landing1.heading
+                : QuickView.heading}
             </h1>
-            {QuickView.subLinks}
+            {currentPath && predefinedPaths.includes(router.asPath)
+              ? landing1.subLinks
+              : QuickView.subLinks}
           </div>
           <div className="flex flex-col gap-3 xl:text-base lg:text-xs text-base xl:gap-3 text-site-typo-secondary">
-            <h1 className="text-lg xlg:text-2xl font-semibold text-site-secondary truncate">
-              {OurServices.heading}
+            <h1
+              className={`text-lg xl:text-2xl font-semibold ${
+                currentPath && predefinedPaths.includes(router.asPath)
+                  && "text-site-primary"
+              } truncate`}
+            >
+              {currentPath && predefinedPaths.includes(router.asPath)
+                ? landing2.heading
+                : OurServices.heading}
             </h1>
-            {OurServices.subLinks}
+            {currentPath && predefinedPaths.includes(router.asPath)
+              ? landing2.subLinks
+              : OurServices.subLinks}
           </div>
           <div className="flex flex-col gap-3 lg:gap-7">
             <div className="h-52 lg:h-full w-full">

@@ -4,15 +4,15 @@ const CarSection = () => {
     const bikes = [
       {
         name: "Royal Enfield Himalayan",
-        img: "/bikes/bike-1.png",
+        img: "/landingbikes/himalayan.jpg",
       },
       {
         name: "Hero XPulse",
-        img: "/bikes/bike-2.png",
+        img: "/landingbikes/XPulse.jpg",
       },
       {
         name: "Royal Enfield Classic",
-        img: "/bikes/bike-3.png",
+        img: "/landingbikes/classic.jpg",
       },
     ];
     
