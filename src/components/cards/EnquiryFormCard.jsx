@@ -35,7 +35,7 @@ const EnquiryFormCard = () => {
   }, [router.asPath]);
     
     const handleSubmit = async (e) => {
-    e.preventDefault();
+      e.preventDefault();
 
       const formData = new FormData(e.target);
       formData.append("name", name);
@@ -62,13 +62,13 @@ const EnquiryFormCard = () => {
         console.log("Error", data);
       }
 
-    setName("");
-    setNumber("");
+      setName("");
+      setNumber("");
       setDestination("");
       setArrival("");
       setMessage("");
-    setPickUpDate(null);
-  };
+      setPickUpDate(null);
+    };
 
   return (
     <section>
