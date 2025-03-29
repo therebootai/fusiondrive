@@ -224,9 +224,9 @@ export default function Footer() {
               />
             </div>
             <p className="capitalize text-sm lg:text-base text-site-typo-secondary lg:shrink">
-              Your trusted partner for Car Hire, Rental, and Self-Drive services
-              in Assam. Experience hassle-free booking, well-maintained
-              vehicles, and reliable customer support for a smooth journey.
+              Experience the best <span className="font-semibold">self-drive car rental</span> service in
+              Guwahati with Fusion Drive. Affordable rates, easy booking &
+              well-maintained cars.
             </p>
             <div className="flex flex-col gap-3 lg:gap-1 xlg:gap-2">
               {Contact.map((contact, key) => (
@@ -242,8 +242,9 @@ export default function Footer() {
           <div className="flex flex-col gap-3 xl:text-base lg:text-xs text-base xl:gap-3 text-site-typo-secondary">
             <h1
               className={`text-lg xl:text-2xl font-semibold ${
-                currentPath && predefinedPaths.includes(router.asPath)
-                  && "text-site-primary"
+                currentPath &&
+                predefinedPaths.includes(router.asPath) &&
+                "text-site-primary"
               } truncate`}
             >
               {currentPath && predefinedPaths.includes(router.asPath)
@@ -257,8 +258,9 @@ export default function Footer() {
           <div className="flex flex-col gap-3 xl:text-base lg:text-xs text-base xl:gap-3 text-site-typo-secondary">
             <h1
               className={`text-lg xl:text-2xl font-semibold ${
-                currentPath && predefinedPaths.includes(router.asPath)
-                  && "text-site-primary"
+                currentPath &&
+                predefinedPaths.includes(router.asPath) &&
+                "text-site-primary"
               } truncate`}
             >
               {currentPath && predefinedPaths.includes(router.asPath)

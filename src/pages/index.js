@@ -44,7 +44,16 @@ Welcome to <span style="font-weight: 500;">Fusion Drives</span> - Your Trusted R
   return (
     <>
       <Head>
-        <title>Fusion Drives | Home</title>
+        <title>
+          Self Drive Bike Rental in Guwahati - Affordable & Hassle-Free | Fusion
+          Drive
+        </title>
+        <meta
+          name="description"
+          content="Looking for self-drive bike rental in Guwahati? Fusion Drive offers 
+top-quality bikes and scooters for rent at the best prices. Ride freely with our easy 
+booking process and well-maintained vehicles."
+        />
       </Head>
       <MainWebSiteTemPlate>
         <HomeSlider />
