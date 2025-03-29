@@ -3,19 +3,19 @@ import { useEffect, useState } from "react";
 
 export default function EnquiryForm() {
   const predefinedPaths = [
-    "/self-drive-car-in-guwahati",
-    "/self-drive-car-in-airport",
-    "/self-drive-car-near-guwahati",
-    "/self-drive-car-in-tawang",
-    "/self-drive-car-near-tawang",
-    "/self-drive-car-near-mizoram",
-    "/self-drive-car-in-mizoram",
-    "/bike-rental-near-me",
-    "/car-rental-in-guwahati",
-    "/bike-rental-service-in-guwahati",
-    "/car-rental-near-airport",
-    "/self-drive-bike-rental-service",
-    "/landing",
+    "/self-drive-car-in-guwahati/",
+    "/self-drive-car-in-airport/",
+    "/self-drive-car-near-guwahati/",
+    "/self-drive-car-in-tawang/",
+    "/self-drive-car-near-tawang/",
+    "/self-drive-car-near-mizoram/",
+    "/self-drive-car-in-mizoram/",
+    "/bike-rental-near-me/",
+    "/car-rental-in-guwahati/",
+    "/bike-rental-service-in-guwahati/",
+    "/car-rental-near-airport/",
+    "/self-drive-bike-rental-service/",
+    "/landing/",
   ];
 
   const [name, setName] = useState("");

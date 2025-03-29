@@ -12,21 +12,21 @@ import { useEffect, useState } from "react";
 import useClickOutside from "@/hooks/useClickOutside";
 import { useRouter } from "next/router";
 
-export default function Footer() {  
+export default function Footer() {
   const predefinedPaths = [
-    "/self-drive-car-in-guwahati",
-    "/self-drive-car-in-airport",
-    "/self-drive-car-near-guwahati",
-    "/self-drive-car-near-tawang",
-    "/self-drive-car-in-tawang",
-    "/self-drive-car-near-mizoram",
-    "/self-drive-car-in-mizoram",
-    "/bike-rental-near-me",
-    "/car-rental-in-guwahati",
-    "/bike-rental-service-in-guwahati",
-    "/car-rental-near-airport",
-    "/self-drive-bike-rental-service",
-    "/landing",
+    "/self-drive-car-in-guwahati/",
+    "/self-drive-car-in-airport/",
+    "/self-drive-car-near-guwahati/",
+    "/self-drive-car-in-tawang/",
+    "/self-drive-car-near-tawang/",
+    "/self-drive-car-near-mizoram/",
+    "/self-drive-car-in-mizoram/",
+    "/bike-rental-near-me/",
+    "/car-rental-in-guwahati/",
+    "/bike-rental-service-in-guwahati/",
+    "/car-rental-near-airport/",
+    "/self-drive-bike-rental-service/",
+    "/landing/",
   ];
   const [currentPath, setCurrentPath] = useState(null);
   const router = useRouter();
@@ -151,11 +151,11 @@ export default function Footer() {
     ),
   };
 
-      useEffect(() => {
-          if (typeof window !== "undefined") {
-            setCurrentPath(router.asPath); // Set client-side path after hydration
-          }
-        }, [router.asPath]);
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setCurrentPath(router.asPath); // Set client-side path after hydration
+    }
+  }, [router.asPath]);
 
   const Contact = [
     {
@@ -224,9 +224,10 @@ export default function Footer() {
               />
             </div>
             <p className="capitalize text-sm lg:text-base text-site-typo-secondary lg:shrink">
-              Experience the best <span className="font-semibold">self-drive car rental</span> service in
-              Guwahati with Fusion Drive. Affordable rates, easy booking &
-              well-maintained cars.
+              Experience the best{" "}
+              <span className="font-semibold">self-drive car rental</span>{" "}
+              service in Guwahati with Fusion Drive. Affordable rates, easy
+              booking & well-maintained cars.
             </p>
             <div className="flex flex-col gap-3 lg:gap-1 xlg:gap-2">
               {Contact.map((contact, key) => (
