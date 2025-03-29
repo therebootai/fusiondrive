@@ -13,21 +13,7 @@ import useClickOutside from "@/hooks/useClickOutside";
 import { useRouter } from "next/router";
 
 export default function Footer() {
-  const predefinedPaths = [
-    "/self-drive-car-in-guwahati/",
-    "/self-drive-car-in-airport/",
-    "/self-drive-car-near-guwahati/",
-    "/self-drive-car-in-tawang/",
-    "/self-drive-car-near-tawang/",
-    "/self-drive-car-near-mizoram/",
-    "/self-drive-car-in-mizoram/",
-    "/bike-rental-near-me/",
-    "/car-rental-in-guwahati/",
-    "/bike-rental-service-in-guwahati/",
-    "/car-rental-near-airport/",
-    "/self-drive-bike-rental-service/",
-    "/landing/",
-  ];
+  const predefinedPaths = ["/[slug]"];
   const [currentPath, setCurrentPath] = useState(null);
   const router = useRouter();
   const [modalOpen, setModalOpen] = useState(false);
@@ -153,7 +139,7 @@ export default function Footer() {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      setCurrentPath(router.asPath); // Set client-side path after hydration
+      setCurrentPath(router.pathname); // Set client-side path after hydration
     }
   }, [router.asPath]);
 
@@ -244,15 +230,15 @@ export default function Footer() {
             <h1
               className={`text-lg xl:text-2xl font-semibold ${
                 currentPath &&
-                predefinedPaths.includes(router.asPath) &&
+                predefinedPaths.includes(router.pathname) &&
                 "text-site-primary"
               } truncate`}
             >
-              {currentPath && predefinedPaths.includes(router.asPath)
+              {currentPath && predefinedPaths.includes(router.pathname)
                 ? landing1.heading
                 : QuickView.heading}
             </h1>
-            {currentPath && predefinedPaths.includes(router.asPath)
+            {currentPath && predefinedPaths.includes(router.pathname)
               ? landing1.subLinks
               : QuickView.subLinks}
           </div>
@@ -260,15 +246,15 @@ export default function Footer() {
             <h1
               className={`text-lg xl:text-2xl font-semibold ${
                 currentPath &&
-                predefinedPaths.includes(router.asPath) &&
+                predefinedPaths.includes(router.pathname) &&
                 "text-site-primary"
               } truncate`}
             >
-              {currentPath && predefinedPaths.includes(router.asPath)
+              {currentPath && predefinedPaths.includes(router.pathname)
                 ? landing2.heading
                 : OurServices.heading}
             </h1>
-            {currentPath && predefinedPaths.includes(router.asPath)
+            {currentPath && predefinedPaths.includes(router.pathname)
               ? landing2.subLinks
               : OurServices.subLinks}
           </div>
