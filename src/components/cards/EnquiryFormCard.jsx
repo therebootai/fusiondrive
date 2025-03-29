@@ -33,24 +33,43 @@ const EnquiryFormCard = () => {
       setCurrentPath(router.asPath); // Set client-side path after hydration
     }
   }, [router.asPath]);
-  const handleSubmit = (e) => {
-    e.preventDefault();
+    
+    const handleSubmit = async (e) => {
+      e.preventDefault();
 
-    const whatsappMessage = `Name: ${name}\nMobile: ${number}\nTransport Type: ${transportType}\nPickup Date: ${pickUpDate} \nMessage: ${message}`;
+      const formData = new FormData(e.target);
+      formData.append("name", name);
+      formData.append("phone", number);
+      if (destination !== "") formData.append("destination", destination);
+      if (arrival !== "") formData.append("arrival", arrival);
+      formData.append("message", message);
+      formData.append("access_key", process.env.NEXT_PUBLIC_ACCESS_KEY);
 
-    const encodedMessage = encodeURIComponent(whatsappMessage);
+      // **Add a custom email subject**
+      formData.append("_subject", "Hello, New Google Ad Leads");
 
-    const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
-    const whatsappUrl = isDesktop
-      ? `https://web.whatsapp.com/send?phone=918822728674&text=${encodedMessage}`
-      : `https://api.whatsapp.com/send?phone=918822728674&text=${encodedMessage}`;
-    window.open(whatsappUrl, "_blank");
-    setName("");
-    setNumber("");
-    setTransportType("");
-    setPickUpDate(null);
-    setMessage("");
-  };
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData,
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        console.log("Success", data);
+        e.target.reset();
+      } else {
+        console.log("Error", data);
+      }
+
+      setName("");
+      setNumber("");
+      setDestination("");
+      setArrival("");
+      setMessage("");
+      setPickUpDate(null);
+    };
+
   return (
     <section>
       <div className="flex flex-col border border-site-border bg-[#fafafa] p-4 md:p-6 xl:p-9 gap-4">
