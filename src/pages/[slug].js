@@ -12,14 +12,15 @@ import CustomerFeedback from "@/components/home/CustomerFeedback";
 
 const metaInfo = {
   landing: {
-    title: "Book Your Ride - Best Rental Service | Book Now & Drive Freely | Fusion Drive",
+    title:
+      "Book Your Ride - Best Rental Service | Book Now & Drive Freely | Fusion Drive",
     description:
       "Rent a car or bike easily with our trusted self-drive services.",
   },
   "self-drive-car-in-guwahati": {
     title: "Self-Drive Cars in Guwahati - Affordable Rentals",
     description:
-      "Find the best self-drive car rental services in Guwahati at great prices.",
+      "Looking for reliable self-drive car rental services in Guwahati? Fusion Drive offers a wide range of rental cars at the best prices. Easy booking, flexible rental plans & no hidden charges. Book now!",
   },
   "self-drive-car-in-airport": {
     title: "Self-Drive Car Rentals Near Airport",
@@ -27,9 +28,10 @@ const metaInfo = {
       "Get a hassle-free car rental service near the airport for a smooth journey.",
   },
   "self-drive-car-near-guwahati": {
-    title: "Top Self-Drive Cars Near Guwahati",
+    title:
+      "Self Drive Car Rental Services in Guwahati - Book Now & Drive Freely | Fusion Drive",
     description:
-      "Choose from a wide range of self-drive cars near Guwahati at affordable rates.",
+      "Looking for reliable self-drive car rental services in Guwahati? Fusion Drive offers a wide range of rental cars at the best prices. Easy booking, flexible rental plans & no hidden charges. Book now!",
   },
   "self-drive-car-in-tawang": {
     title: "Rent a Self-Drive Car in Tawang",
@@ -40,9 +42,10 @@ const metaInfo = {
     description: "Book a self-drive car in Mizoram for a comfortable journey.",
   },
   "car-rental-in-guwahati": {
-    title: "Car Rentals in Guwahati - Easy & Affordable",
+    title:
+      "Self Drive Car Rental Services in Guwahati - Book Now & Drive Freely | Fusion Drive",
     description:
-      "Find the best car rental deals in Guwahati for short and long trips.",
+      "Looking for reliable self-drive car rental services in Guwahati? Fusion Drive offers a wide range of rental cars at the best prices. Easy booking, flexible rental plans & no hidden charges. Book now!",
   },
   "bike-rental-service-in-guwahati": {
     title: "Bike Rental Service in Guwahati",
@@ -62,6 +65,12 @@ const metaInfo = {
     title: "Self-Drive Bike Rentals - Easy & Quick",
     description:
       "Get the best self-drive bike rental services for your next adventure.",
+  },
+  "self-drive-service-in-guwahati": {
+    title:
+      "Self Drive Car Rental Services in Guwahati - Book Now & Drive Freely | Fusion Drive",
+    description:
+      "Looking for reliable self-drive car rental services in Guwahati? Fusion Drive offers a wide range of rental cars at the best prices. Easy booking, flexible rental plans & no hidden charges. Book now!",
   },
 };
 

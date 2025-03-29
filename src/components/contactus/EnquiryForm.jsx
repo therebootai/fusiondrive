@@ -43,6 +43,7 @@ export default function EnquiryForm() {
     if (data.success) {
       console.log("Success", data);
       e.target.reset();
+      router.push("/thank-you");
     } else {
       console.log("Error", data);
     }

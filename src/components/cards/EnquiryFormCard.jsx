@@ -3,9 +3,7 @@ import { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 
 const EnquiryFormCard = () => {
-   const predefinedPaths = [
-    "/[slug]",
-   ];
+  const predefinedPaths = ["/[slug]"];
 
   const router = useRouter();
   const [name, setName] = useState("");
@@ -14,52 +12,53 @@ const EnquiryFormCard = () => {
   const [pickUpDate, setPickUpDate] = useState(null);
   const [message, setMessage] = useState("");
   const [destination, setDestination] = useState("");
-   const [arrival, setArrival] = useState("");
+  const [arrival, setArrival] = useState("");
   const [currentPath, setCurrentPath] = useState(null);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
       console.log("Current path:", router.pathname);
-      
+
       setCurrentPath(router.pathname); // Set client-side path after hydration
     }
   }, [router.pathname]);
-    
-    const handleSubmit = async (e) => {
-      e.preventDefault();
 
-      const formData = new FormData(e.target);
-      formData.append("name", name);
-      formData.append("phone", number);
-      if (destination !== "") formData.append("destination", destination);
-      if (arrival !== "") formData.append("arrival", arrival);
-      formData.append("message", message);
-      formData.append("access_key", process.env.NEXT_PUBLIC_ACCESS_KEY);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-      // **Add a custom email subject**
-      formData.append("_subject", "Hello, New Google Ad Leads");
+    const formData = new FormData(e.target);
+    formData.append("name", name);
+    formData.append("phone", number);
+    if (destination !== "") formData.append("destination", destination);
+    if (arrival !== "") formData.append("arrival", arrival);
+    formData.append("message", message);
+    formData.append("access_key", process.env.NEXT_PUBLIC_ACCESS_KEY);
 
-      const response = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        body: formData,
-      });
+    // **Add a custom email subject**
+    formData.append("_subject", "Hello, New Google Ad Leads");
 
-      const data = await response.json();
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      body: formData,
+    });
 
-      if (data.success) {
-        console.log("Success", data);
-        e.target.reset();
-      } else {
-        console.log("Error", data);
-      }
+    const data = await response.json();
 
-      setName("");
-      setNumber("");
-      setDestination("");
-      setArrival("");
-      setMessage("");
-      setPickUpDate(null);
-    };
+    if (data.success) {
+      console.log("Success", data);
+      e.target.reset();
+      router.push("/thank-you");
+    } else {
+      console.log("Error", data);
+    }
+
+    setName("");
+    setNumber("");
+    setDestination("");
+    setArrival("");
+    setMessage("");
+    setPickUpDate(null);
+  };
 
   return (
     <section>
@@ -115,11 +114,7 @@ const EnquiryFormCard = () => {
 
           <input
             type="text"
-            className={`px-4 lg:px-7 py-4 lg:py-6 bg-white/65 border border-site-border rounded text-site-secondary capitalize text-base focus:outline-none ${
-              currentPath && predefinedPaths.includes(router.pathname)
-                ? "xl:col-span-2 col-span-1"
-                : ""
-            }`}
+            className={`px-4 lg:px-7 py-4 lg:py-6 bg-white/65 border border-site-border rounded text-site-secondary capitalize text-base focus:outline-none xl:col-span-2 col-span-1`}
             placeholder="Message"
             value={message}
             onChange={(e) => setMessage(e.target.value)}
