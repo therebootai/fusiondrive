@@ -6,7 +6,6 @@ import "swiper/css/navigation"; // Added for manual controls
 import { Swiper, SwiperSlide } from "swiper/react";
 import {
   EffectCoverflow,
-  Pagination,
   Navigation,
   Autoplay,
 } from "swiper/modules";
@@ -36,7 +35,7 @@ const CustomerSection = () => {
 
       <div className="w-full max-w-5xl px-6">
         <Swiper
-          modules={[EffectCoverflow, Pagination, Navigation, Autoplay]}
+          modules={[EffectCoverflow, Navigation, Autoplay]}
           effect="coverflow"
           grabCursor={true}
           centeredSlides={true}
@@ -44,7 +43,6 @@ const CustomerSection = () => {
           loop={true}
           autoplay={{ delay: 2000, disableOnInteraction: false }}
           navigation={true}
-          pagination={{ clickable: true }}
           breakpoints={{
             640: { slidesPerView: 1, spaceBetween: 20 },
             768: { slidesPerView: 2, spaceBetween: 30 },

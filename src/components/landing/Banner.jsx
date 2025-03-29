@@ -9,8 +9,8 @@ const Banner = () => {
           width={500}
           height={500}
           className="w-full h-full object-cover"
-        >
-        </Image>
+          priority
+        />
     </div>
   )
 }

@@ -4,19 +4,7 @@ import DatePicker from "react-datepicker";
 
 const EnquiryFormCard = () => {
    const predefinedPaths = [
-    "/self-drive-car-in-guwahati/",
-    "/self-drive-car-in-airport/",
-    "/self-drive-car-near-guwahati/",
-    "/self-drive-car-in-tawang/",
-    "/self-drive-car-near-tawang/",
-    "/self-drive-car-near-mizoram/",
-    "/self-drive-car-in-mizoram/",
-    "/bike-rental-near-me/",
-    "/car-rental-in-guwahati/",
-    "/bike-rental-service-in-guwahati/",
-    "/car-rental-near-airport/",
-    "/self-drive-bike-rental-service/",
-    "/landing/",
+    "/[slug]",
    ];
 
   const router = useRouter();
@@ -25,14 +13,17 @@ const EnquiryFormCard = () => {
   const [transportType, setTransportType] = useState("");
   const [pickUpDate, setPickUpDate] = useState(null);
   const [message, setMessage] = useState("");
-
+  const [destination, setDestination] = useState("");
+   const [arrival, setArrival] = useState("");
   const [currentPath, setCurrentPath] = useState(null);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      setCurrentPath(router.asPath); // Set client-side path after hydration
+      console.log("Current path:", router.pathname);
+      
+      setCurrentPath(router.pathname); // Set client-side path after hydration
     }
-  }, [router.asPath]);
+  }, [router.pathname]);
     
     const handleSubmit = async (e) => {
       e.preventDefault();
@@ -122,26 +113,11 @@ const EnquiryFormCard = () => {
             </select>
           )}
 
-          {currentPath && !predefinedPaths.includes(router.asPath) && (
-            <div className="bg-white/65 border border-site-border rounded text-site-secondary capitalize text-base focus:outline-none">
-              <DatePicker
-                selected={pickUpDate}
-                onChange={(date) => setPickUpDate(date)}
-                dateFormat="MM/dd/yyyy"
-                placeholderText="Pick up Date"
-                showMonthDropdown
-                showYearDropdown
-                dropdownMode="select"
-                required
-                className="!w-full px-4 lg:px-7 py-4 lg:py-6 bg-white outline-none placeholder:text-site-main-gray text-site-main-gray text-sm md:col-span-2 col-span-1"
-              />
-            </div>
-          )}
           <input
             type="text"
             className={`px-4 lg:px-7 py-4 lg:py-6 bg-white/65 border border-site-border rounded text-site-secondary capitalize text-base focus:outline-none ${
-              currentPath && predefinedPaths.includes(router.asPath)
-                ? "md:col-span-2 col-span-1"
+              currentPath && predefinedPaths.includes(router.pathname)
+                ? "xl:col-span-2 col-span-1"
                 : ""
             }`}
             placeholder="Message"
@@ -150,7 +126,7 @@ const EnquiryFormCard = () => {
           />
           <button
             type="submit"
-            className="px-4 lg:px-7 py-4 lg:py-6 bg-site-primary rounded text-white capitalize text-base focus:outline-none font-medium buttonshine w-full"
+            className="px-4 lg:px-7 py-4 lg:py-6 bg-site-primary rounded text-white capitalize text-base focus:outline-none font-medium buttonshine w-full col-span-full xl:col-auto"
           >
             Book Now Today!
           </button>

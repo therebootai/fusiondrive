@@ -11,19 +11,7 @@ import useClickOutside from "@/hooks/useClickOutside";
 
 export default function NavBar({ ref }) {
   const predefinedPaths = [
-    "/self-drive-car-in-guwahati/",
-    "/self-drive-car-in-airport/",
-    "/self-drive-car-near-guwahati/",
-    "/self-drive-car-in-tawang/",
-    "/self-drive-car-near-tawang/",
-    "/self-drive-car-near-mizoram/",
-    "/self-drive-car-in-mizoram/",
-    "/bike-rental-near-me/",
-    "/car-rental-in-guwahati/",
-    "/bike-rental-service-in-guwahati/",
-    "/car-rental-near-airport/",
-    "/self-drive-bike-rental-service/",
-    "/landing/",
+    "/[slug]",
   ];
   const [isScrolling, setIsScrolling] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -34,9 +22,9 @@ export default function NavBar({ ref }) {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      setCurrentPath(router.asPath); // Set client-side path after hydration
+      setCurrentPath(router.pathname); // Set client-side path after hydration
     }
-  }, [router.asPath]);
+  }, [router.pathname]);
 
   const isActive = (path) => {
     return router.pathname === path;
@@ -165,7 +153,7 @@ export default function NavBar({ ref }) {
         <div className="bg-black/90 absolute top-full w-full left-0 text-white lg:hidden p-6 pb-24 rounded-b-lg h-screen overflow-y-scroll">
           <ul className="flex flex-col gap-4 capitalize">
             {currentPath &&
-              !predefinedPaths.includes(router.asPath) &&
+              !predefinedPaths.includes(router.pathname) &&
               NavLinksData.map((item, index) => (
                 <li key={index} className="relative">
                   {item.href ? (

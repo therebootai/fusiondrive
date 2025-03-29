@@ -1,22 +1,9 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import DatePicker from "react-datepicker";
 
 export default function EnquiryForm() {
-  const predefinedPaths = [
-    "/self-drive-car-in-guwahati/",
-    "/self-drive-car-in-airport/",
-    "/self-drive-car-near-guwahati/",
-    "/self-drive-car-in-tawang/",
-    "/self-drive-car-near-tawang/",
-    "/self-drive-car-near-mizoram/",
-    "/self-drive-car-in-mizoram/",
-    "/bike-rental-near-me/",
-    "/car-rental-in-guwahati/",
-    "/bike-rental-service-in-guwahati/",
-    "/car-rental-near-airport/",
-    "/self-drive-bike-rental-service/",
-    "/landing/",
-  ];
+  const predefinedPaths = ["/[slug]"];
 
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
@@ -26,11 +13,11 @@ export default function EnquiryForm() {
   const [pickUpDate, setPickUpDate] = useState(null);
 
   const router = useRouter();
-  const [currentPath, setCurrentPath] = useState(router.asPath);
+  const [currentPath, setCurrentPath] = useState(router.pathname);
 
   useEffect(() => {
-    setCurrentPath(router.asPath);
-  }, [router.asPath]);
+    setCurrentPath(router.pathname);
+  }, [router.pathname]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -94,13 +81,20 @@ export default function EnquiryForm() {
           className="py-4 xl:py-6 text-[#020202] placeholder:text-[#020202] px-4 w-full xl:max-w-[66%] bg-white/65 focus:outline-none rounded"
           placeholder="Mobile Number"
         />
-        {currentPath && predefinedPaths.includes(router.asPath) ? (
-          <input
-            type="date"
-            name="pickupdate"
-            className="py-4 xl:py-6 text-[#020202] placeholder:text-[#020202] px-4 w-full xl:max-w-[66%] bg-white/65 focus:outline-none rounded"
-            onChange={(e) => setPickUpDate(e.target.value)}
-          />
+        {currentPath && predefinedPaths.includes(router.pathname) ? (
+          <div className="flex flex-1 bg-white/65 rounded w-[66%] mx-auto">
+            <DatePicker
+              selected={pickUpDate}
+              onChange={(date) => setPickUpDate(date)}
+              dateFormat="MM/dd/yyyy"
+              placeholderText="Pick up Date"
+              showMonthDropdown
+              showYearDropdown
+              dropdownMode="select"
+              required
+              className="!w-full px-4 lg:px-7 py-4 lg:py-6 outline-none bg-transparent placeholder:text-[#020202] text-site-main-gray text-sm"
+            />
+          </div>
         ) : (
           <div className="flex gap-4 flex-col w-full items-center">
             <input
