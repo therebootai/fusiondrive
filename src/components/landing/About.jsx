@@ -19,19 +19,19 @@ const About = () => {
   ];
 
   const [height, elementRef] = useElementHeight();
-   const [isSmallScreen, setIsSmallScreen] = useState(false);
-     useEffect(() => {
-       const handleResize = () => {
-         setIsSmallScreen(window.innerWidth < 768);
-       };
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
+  useEffect(() => {
+    const handleResize = () => {
+      setIsSmallScreen(window.innerWidth < 768);
+    };
 
-       handleResize();
-       window.addEventListener("resize", handleResize);
+    handleResize();
+    window.addEventListener("resize", handleResize);
 
-       return () => {
-         window.removeEventListener("resize", handleResize);
-       };
-     }, []);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   return (
     <section>
@@ -48,30 +48,36 @@ const About = () => {
             tourists who need adaptable mobility. Our self-drive car rentals
             deliver a smooth experience to customers who visit Assam for
             business or sightseeing, or need temporary vehicles for day-to-day
-            needs. <br /> <br />Fusion Drives provides a selection of high-quality vehicles
-            for self drive service in Guwahati that includes small urban
-            hatchbacks alongside big SUVs to fulfill all driving needs. You can
-            select our rental plans because they offer transparency in pricing
-            and flexible terms, and affordability without any hidden costs to
-            ensure stress-free driving. <br /> <br />Customers can complete their booking
-            process easily through Fusion Drives. Users can easily navigate
-            through our web platform to select their desired vehicle before
-            booking the rental length for quick roadway access. Our company
-            maintains continuous 24-hour support for customers who need
-            assistance throughout their rental experience. <br /> <br />Our Guwahati
-            self-drive car rental service provides users with full trip control,
-            unlike standard taxi services. The joy of personal driving combines
-            with freedom and privacy, so you can commute without a professional
-            driver. Our service covers every period of travel, therefore, you
-            can rent vehicles for short or long-term needs. <br /> <br />Travel
-            transformation from Fusion Drives emerges through their combination
-            of comfort and affordable solutions. Experience premium{" "}
+            needs. <br /> <br />
+            Fusion Drives provides a selection of high-quality vehicles for self
+            drive service in Guwahati that includes small urban hatchbacks
+            alongside big SUVs to fulfill all driving needs. You can select our
+            rental plans because they offer transparency in pricing and flexible
+            terms, and affordability without any hidden costs to ensure
+            stress-free driving. <br /> <br />
+            Customers can complete their booking process easily through Fusion
+            Drives. Users can easily navigate through our web platform to select
+            their desired vehicle before booking the rental length for quick
+            roadway access. Our company maintains continuous 24-hour support for
+            customers who need assistance throughout their rental experience.{" "}
+            <br /> <br />
+            Our Guwahati self-drive car rental service provides users with full
+            trip control, unlike standard taxi services. The joy of personal
+            driving combines with freedom and privacy, so you can commute
+            without a professional driver. Our service covers every period of
+            travel, therefore, you can rent vehicles for short or long-term
+            needs. <br /> <br />
+            Travel transformation from Fusion Drives emerges through their
+            combination of comfort and affordable solutions. Experience premium{" "}
             <span className="font-bold">self drive service in Guwahati</span> by
             selecting us for a journey that keeps you in control of your travels
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {content.map((item) => (
-              <div className="flex items-center justify-center gap-2 bg-site-primary p-4 rounded">
+              <div
+                className="flex items-center justify-center gap-2 bg-site-primary p-4 rounded"
+                key={item.title}
+              >
                 <h1 className="text-white text-lg">{item.title}</h1>
               </div>
             ))}
@@ -94,6 +100,6 @@ const About = () => {
       </div>
     </section>
   );
-}
+};
 
-export default About
+export default About;
