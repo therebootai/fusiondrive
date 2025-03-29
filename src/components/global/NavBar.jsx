@@ -11,32 +11,32 @@ import useClickOutside from "@/hooks/useClickOutside";
 
 export default function NavBar({ ref }) {
   const predefinedPaths = [
-    "/self-drive-car-in-guwahati",
-    "/self-drive-car-in-airport",
-    "/self-drive-car-near-guwahati",
-    "/self-drive-car-in-tawang",
-    "/self-drive-car-near-tawang",
-    "/self-drive-car-near-mizoram",
-    "/self-drive-car-in-mizoram",
-    "/bike-rental-near-me",
-    "/car-rental-in-guwahati",
-    "/bike-rental-service-in-guwahati",
-    "/car-rental-near-airport",
-    "/self-drive-bike-rental-service",
-    "/landing",
+    "/self-drive-car-in-guwahati/",
+    "/self-drive-car-in-airport/",
+    "/self-drive-car-near-guwahati/",
+    "/self-drive-car-in-tawang/",
+    "/self-drive-car-near-tawang/",
+    "/self-drive-car-near-mizoram/",
+    "/self-drive-car-in-mizoram/",
+    "/bike-rental-near-me/",
+    "/car-rental-in-guwahati/",
+    "/bike-rental-service-in-guwahati/",
+    "/car-rental-near-airport/",
+    "/self-drive-bike-rental-service/",
+    "/landing/",
   ];
   const [isScrolling, setIsScrolling] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(null); // Track open dropdown for mobile
   const [modalOpen, setModalOpen] = useState(false);
   const router = useRouter();
-    const [currentPath, setCurrentPath] = useState(null);
+  const [currentPath, setCurrentPath] = useState(null);
 
-      useEffect(() => {
-        if (typeof window !== "undefined") {
-          setCurrentPath(router.asPath); // Set client-side path after hydration
-        }
-      }, [router.asPath]);
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setCurrentPath(router.asPath); // Set client-side path after hydration
+    }
+  }, [router.asPath]);
 
   const isActive = (path) => {
     return router.pathname === path;
@@ -77,7 +77,7 @@ export default function NavBar({ ref }) {
 
         <ul className="hidden lg:flex items-center justify-center gap-5">
           {currentPath &&
-            !predefinedPaths.includes(router.asPath) &&
+            !predefinedPaths.includes(currentPath) &&
             NavLinksData.map((item, index) => (
               <li key={index} className="relative group">
                 {item.href ? (
@@ -166,7 +166,7 @@ export default function NavBar({ ref }) {
           <ul className="flex flex-col gap-4 capitalize">
             {currentPath &&
               !predefinedPaths.includes(router.asPath) &&
-               NavLinksData.map((item, index) => (
+              NavLinksData.map((item, index) => (
                 <li key={index} className="relative">
                   {item.href ? (
                     <Link href={item.href} className="hover:text-primary ">
